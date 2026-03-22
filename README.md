@@ -111,16 +111,6 @@ This avoids copying the same login steps into every test case.
 
 ---
 
-## Why This Design Is Useful
-
-- avoids redundant steps
-- improves readability
-- makes maintenance easier
-- supports modular test design
-- lets you organize tests like small reusable functions
-
----
-
 ## Before vs After Reuse
 
 ### Without reusable test cases
