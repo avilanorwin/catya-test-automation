@@ -199,32 +199,19 @@ flowchart TD
 
 `https://calculator.net/percentage-calculator.html`
 
-### Example Script
-
-```txt
-OPEN browser="chrome"
-
-NAVIGATE url="https://calculator.net/percentage-calculator.html"
-
-INPUT id="cpar1" value="10"
-INPUT id="cpar2" value="50"
-
-CLICK xpath="//input[@value='Calculate']"
-
-WAIT_VISIBLE xpath="//p[@class='verybigtext']" timeout=10
-
-VERIFY xpath="//p[@class='verybigtext']" value="5"
-```
-
-### Expected Result
-
-```txt
-10% of 50 = 5
-```
-
----
-
 ## Sample Execution
+
+Sample variable file
+data/calculator.properties
+```txt
+#Calculator
+calculator_net_homeurl = http://www.calculator.net
+percentage_calc_link = .//*[@id='hl3']/li[3]/a
+calc_button = //input[@type='submit' and @value='Calculate']
+result = .//*[@id='content']/p[2]/font/b
+value1 = 100
+value2 = 50
+```
 
 ![CATYA Demo](docs/demo.png)
 
