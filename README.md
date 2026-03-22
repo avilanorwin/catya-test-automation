@@ -25,11 +25,56 @@ CATYA is a **Java + Selenium-based automation framework** that executes browser 
 ## Setup
 
 ```bash
-git clone <repo>
+git clone https://github.com/avilanorwin/catya.git
 cd catya
 mvn clean compile
-mvn mvn exec:java
+mvn exec:java
 ```
+
+---
+
+## Demo: Percentage Calculator Test
+
+> This example uses a public website (https://calculator.net) for demonstration purposes only.  
+> The site is not owned by this project.
+
+### Test Target
+https://calculator.net/percentage-calculator.html
+
+---
+
+### Test Script
+
+```txt
+OPEN browser="chrome"
+
+NAVIGATE url="https://calculator.net/percentage-calculator.html"
+
+INPUT id="cpar1" value="10"
+INPUT id="cpar2" value="50"
+
+CLICK xpath="//input[@value='Calculate']"
+
+WAIT_VISIBLE xpath="//p[@class='verybigtext']" timeout=10
+
+VERIFY xpath="//p[@class='verybigtext']" value="5"
+```
+
+---
+
+### Expected Result
+
+```
+10% of 50 = 5
+```
+
+---
+
+## Sample Execution
+
+![CATYA Demo](docs/demo.png)
+
+> Place your screenshot in: `docs/demo.png`
 
 ---
 
@@ -98,53 +143,12 @@ LOAD data="login"
 
 ### Flow Control
 ```
-IF $result is Passed
+IF $ result is Passed
 FI
 
 LOOP 3 times
 POOL
 EXIT loop
-```
-
----
-
-## Example: Login Test
-
-```txt
-OPEN browser="chrome"
-
-NAVIGATE url="https://example.com/login"
-
-INPUT id="username" value="admin"
-INPUT id="password" value="password123"
-
-CLICK id="loginBtn"
-
-WAIT_VISIBLE id="dashboard" timeout=10
-
-VERIFY id="welcomeMsg" value="Welcome Admin"
-
-CLOSE browser="chrome"
-```
-
----
-
-## Data Driven Example
-
-### data/login.properties
-```
-username=admin
-password=1234
-url=https://example.com/login
-```
-
-### Script
-```
-LOAD data="login"
-
-NAVIGATE url=$ url
-INPUT id="username" value=$ username
-INPUT id="password" value=$ password
 ```
 
 ---
